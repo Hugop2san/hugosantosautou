@@ -1,0 +1,46 @@
+echo "# Environments
+env/
+venv/
+ENV/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+
+# Database
+instance/*.db
+instance/*.sqlite
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Docker
+.dockerignore
+Dockerfile
+
+# Logs
+*.log
+logs/
+
+# Temp files
+tmp/
+temp/
+
+# Documentação
+docs/
+README.md
+CHANGELOG.md" > .dockerignore

@@ -1,0 +1,82 @@
+
+body {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+/* MENU NAVEGACAO  */
+.sidebar {          
+    width: 200px;
+    height: 100vh;
+    padding: 0;
+    background-color:  rgba(7, 147, 228, 0.86);
+    
+    background-size: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.759); /* sombra  */
+
+}
+/* LOGO AUTOU  */
+.logo-img {
+    max-height: 40px;
+    width: auto;
+}
+/* MENU BOTAO ESTILIZACAO  */
+.menu-btn {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    width: 100%;
+    text-decoration: none;
+    color: #000;
+    background-color: transparent; /* sem bordas ou fundo */
+    transition: background-color 0.2s, color 0.2s;
+}
+/* MENU BOTAO ESTILIZACAO  */
+.menu-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    cursor: pointer;
+}
+
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+/* FORM  */
+.form-floating-box {
+    position: fixed;
+    bottom: 0px;
+    right: 20px;
+    width: 400px; 
+    height:400px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.414); /* sombra  */
+
+}
+/* ESTILIZACAO RESPONSE DO AGENTE   */
+#autoAlert {
+    position: fixed; /* Ficar sobre o conteúdo */
+    top: 20px;
+    right: 20px;
+    z-index: 1050; /* Maior que cards, tabelas, etc. */
+    opacity: 1;
+    
+}
+#autoAlert.hide {
+    opacity: 0;
+}
+
+/* MEDIAQUERIES  */
+@media (max-width: 768px) {
+    .logo-img {
+        max-height: 30px;
+    }
+}

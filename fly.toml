@@ -1,0 +1,25 @@
+echo "# Configuração para Fly.io
+# Nome do app - escolha um nome ÚNICO (pode ser alterado depois)
+app = \"autou-app-$(date +%s)\"
+
+[build]
+  dockerfile = \"Dockerfile\"
+
+[env]
+  PYTHONPATH = \"/app\"
+  FLASK_ENV = \"production\"
+  FLASK_APP = \"app.py\"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+
+[[http_service.checks]]
+  interval = 10000
+  timeout = 2000
+  grace_period = \"5s\"
+
+[vm]
+  cpu_kind = \"shared\"
+  cpus = 2
+  memory_mb = 2048" > fly.toml
