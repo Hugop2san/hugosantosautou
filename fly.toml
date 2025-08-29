@@ -1,17 +1,17 @@
-echo 'app = "autou-app-hugo"
-
-[build]
-  dockerfile = "Dockerfile"
-
-[env]
-  FLASK_ENV = "production"
-  DATABASE_URL = "sqlite:///instance/autou.db"
-
-[http_service]
-  internal_port = 5000
-  force_https = true
-
-[vm]
-  cpu_kind = "shared"
-  cpus = 2
-  memory_mb = 2048' > fly.toml
+app = "autou-hugo-app" 
+ 
+[build] 
+  dockerfile = "Dockerfile" 
+ 
+[env] 
+  FLASK_ENV = "production" 
+  DATABASE_URL = "sqlite:///instance/autou.db" 
+ 
+[http_service] 
+  internal_port = 5000 
+  force_https = true 
+ 
+[vm] 
+  cpu_kind = "shared" 
+  cpus = 2 
+  memory_mb = 2048 
