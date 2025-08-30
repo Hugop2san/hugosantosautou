@@ -19,7 +19,8 @@ RUN apt-get update && apt-get install -y \
 
 # Copia todo o código
 COPY . .
-
+# Cria pasta persistente para SQLite
+RUN mkdir -p /var/data
 # Porta que o Fly.io vai expor
 EXPOSE 8080
 
@@ -29,6 +30,5 @@ CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:8080"]
 # RODAR ASIM PARA TESTES LOCAIS
 #CMD ["python", "app.py"]
 
-# Cria pasta persistente para SQLite
-RUN mkdir -p /var/data
+
 
