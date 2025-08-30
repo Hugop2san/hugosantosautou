@@ -1,20 +1,28 @@
-# Imagem base oficial do Python
+# Use imagem slim para reduzir tamanho
 FROM python:3.11-slim
 
-# Criar diretório para app
+# Diretório de trabalho
 WORKDIR /app
 
-# Copiar arquivos de requisitos
-COPY requirements-prod.txt .
+# Copia apenas requirements primeiro para aproveitar cache
+COPY requirements.txt .
 
-# Instalar dependências
-RUN pip install --no-cache-dir -r requirements-prod.txt
+# Instala dependências básicas
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libssl-dev \
+    libffi-dev \
+    && pip install --no-cache-dir -r requirements.txt \
+    && apt-get remove -y build-essential \
+    && apt-get autoremove -y \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copiar restante do projeto
+# Copia todo o código
 COPY . .
 
-# Expõe a porta para o servidor
+# Porta que o Fly.io vai expor
 EXPOSE 8080
 
-# Comando de inicialização
-CMD ["gunicorn", "-b", "0.0.0.0:8080", "app:app"]
+# Comando para rodar o Flask
+CMD ["python", "app.py","gunicorn", "app.wsgi:application", "--bind", "0.0.0.0:8000"]
+#CMD ["gunicorn", "app.wsgi:application", "--bind", "0.0.0.0:8000"]
