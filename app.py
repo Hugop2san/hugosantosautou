@@ -26,15 +26,22 @@ GENERATOR_URL = "https://api-inference.huggingface.co/models/facebook/bart-large
 # Inicializa Flask
 app = Flask(__name__)
 
+# Certifique-se que a pasta existe
+os.makedirs("/var/data", exist_ok=True)
 # Banco de dados
+
+
 db_path = os.getenv("DATABASE_PATH", "/var/data/emails.db")
 app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{db_path}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# RENDER CHAMADA
+
+SECRET_KEY = os.environ.get("SECRET_KEY", "fallback_key")
+app.config['SECRET_KEY'] = SECRET_KEY
+
 db.init_app(app)
 
 
-# RENDER CHAMADA
-app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "fallback")
 
 
 # Inicializa NLTK

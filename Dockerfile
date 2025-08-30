@@ -24,5 +24,11 @@ COPY . .
 EXPOSE 8080
 
 # Comando para rodar o Flask
-CMD ["python", "app.py","gunicorn", "app.wsgi:application", "--bind", "0.0.0.0:8000"]
-#CMD ["gunicorn", "app.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:8080"]
+
+# RODAR ASIM PARA TESTES LOCAIS
+#CMD ["python", "app.py"]
+
+# Cria pasta persistente para SQLite
+RUN mkdir -p /var/data
+
